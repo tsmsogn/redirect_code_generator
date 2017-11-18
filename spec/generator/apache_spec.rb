@@ -84,6 +84,26 @@ RewriteEngine On
 
 RewriteCond %{HTTPS} off
 RewriteCond %{HTTP_HOST} ^old\\\.com$
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^.*$ http://new.com [R=301,L]
+</IfModule>
+CODE
+
+      expect(g.create_redirect_code).to eq(code)
+    end
+
+    it "works with url has port" do
+      old = "http://old.com:8080"
+      new = "http://new.com"
+      g = generator.new(old, new)
+
+      code = <<CODE
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} ^old\\\.com$
+RewriteCond %{SERVER_PORT} 8080
 RewriteRule ^.*$ http://new.com [R=301,L]
 </IfModule>
 CODE
@@ -102,6 +122,7 @@ RewriteEngine On
 
 RewriteCond %{HTTPS} on
 RewriteCond %{HTTP_HOST} ^old\\\.com$
+RewriteCond %{SERVER_PORT} 443
 RewriteRule ^.*$ https://new.com [R=301,L]
 </IfModule>
 CODE

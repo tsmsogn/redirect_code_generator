@@ -11,6 +11,9 @@ RewriteCond %{HTTPS} <% if uri.scheme == 'https'%>on<% else %>off<% end %>
 <% if uri.host %>
 RewriteCond %{HTTP_HOST} ^<%= escape(uri.host) %>$
 <% end %>
+<% if uri.port %>
+RewriteCond %{SERVER_PORT} <%= uri.port %>
+<% end %>
 <% if uri.path != '' %>
 RewriteCond %{REQUEST_URI} ^<%= escape(uri.path) %>$
 <% end %>
@@ -19,7 +22,11 @@ RewriteCond %{REQUEST_URI} ^<%= escape(uri.path) %>$
 RewriteCond %{QUERY_STRING} (^|&)<%= param %>($|&)
 <% end %>
 <% end %>
-RewriteRule ^.*$ <%= new %> [R=<%= status %>,L]
+<% if permanent %>
+RewriteRule ^.*$ <%= new %> [R=301,L]
+<% else %>
+RewriteRule ^.*$ <%= new %> [R=302,L]
+<% end %>
 </IfModule>
 CODE
     
