@@ -1,5 +1,5 @@
 require "spec_helper"
-require "generator/apache"
+require "redirect_code_generator/generator/apache"
 
 describe RedirectCodeGenerator::Generator::Apache do
   subject(:generator) { described_class }

@@ -1,4 +1,4 @@
-require "generator/apache"
+require "redirect_code_generator/generator/apache"
 
 module RedirectCodeGenerator
   class GeneratorFactory

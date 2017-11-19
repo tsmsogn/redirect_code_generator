@@ -1,4 +1,4 @@
-require "erb_templates"
+require "redirect_code_generator/erb_templates"
 
 module RedirectCodeGenerator
   class ERBFactory

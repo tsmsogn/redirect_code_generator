@@ -1,4 +1,4 @@
-require "generator/generator"
+require "redirect_code_generator/generator/generator"
 
 module RedirectCodeGenerator
   module Generator

@@ -1,6 +1,6 @@
 require "spec_helper"
-require "generator_factory"
-require "generator/generator"
+require "redirect_code_generator/generator_factory"
+require "redirect_code_generator/generator/generator"
 
 describe RedirectCodeGenerator::GeneratorFactory do
   subject(:factory) { described_class }

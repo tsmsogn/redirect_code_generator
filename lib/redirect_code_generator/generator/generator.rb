@@ -1,6 +1,6 @@
 require "uri"
-require "erb_factory"
-require "escapable"
+require "redirect_code_generator/erb_factory"
+require "redirect_code_generator/escapable"
 
 module RedirectCodeGenerator
   module Generator
