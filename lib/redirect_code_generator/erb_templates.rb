@@ -22,11 +22,7 @@ RewriteCond %{REQUEST_URI} ^<%= escape(uri.path) %>$
 RewriteCond %{QUERY_STRING} (^|&)<%= param %>($|&)
 <% end %>
 <% end %>
-<% if permanent %>
-RewriteRule ^.*$ <%= new %> [R=301,L]
-<% else %>
-RewriteRule ^.*$ <%= new %> [R=302,L]
-<% end %>
+RewriteRule ^.*$ <%= new %>? [R=<% if permanent %>301<% else %>302<% end %>,L]
 </IfModule>
 CODE
     

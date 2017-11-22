@@ -29,7 +29,7 @@ describe RedirectCodeGenerator::Generator::Apache do
 RewriteEngine On
 
 RewriteCond %{REQUEST_URI} ^/old\\\.html$
-RewriteRule ^.*$ /new.html [R=301,L]
+RewriteRule ^.*$ /new.html? [R=301,L]
 </IfModule>
 CODE
 
@@ -47,7 +47,7 @@ CODE
 RewriteEngine On
 
 RewriteCond %{REQUEST_URI} ^/old/$
-RewriteRule ^.*$ /new/ [R=302,L]
+RewriteRule ^.*$ /new/? [R=302,L]
 </IfModule>
 CODE
 
@@ -66,7 +66,7 @@ RewriteEngine On
 RewriteCond %{REQUEST_URI} ^/old/$
 RewriteCond %{QUERY_STRING} (^|&)page=1($|&)
 RewriteCond %{QUERY_STRING} (^|&)search=word($|&)
-RewriteRule ^.*$ /new/ [R=301,L]
+RewriteRule ^.*$ /new/? [R=301,L]
 </IfModule>
 CODE
 
@@ -85,7 +85,7 @@ RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteCond %{HTTP_HOST} ^old\\\.com$
 RewriteCond %{SERVER_PORT} 80
-RewriteRule ^.*$ http://new.com [R=301,L]
+RewriteRule ^.*$ http://new.com? [R=301,L]
 </IfModule>
 CODE
 
@@ -104,7 +104,7 @@ RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteCond %{HTTP_HOST} ^old\\\.com$
 RewriteCond %{SERVER_PORT} 8080
-RewriteRule ^.*$ http://new.com [R=301,L]
+RewriteRule ^.*$ http://new.com? [R=301,L]
 </IfModule>
 CODE
 
@@ -123,7 +123,7 @@ RewriteEngine On
 RewriteCond %{HTTPS} on
 RewriteCond %{HTTP_HOST} ^old\\\.com$
 RewriteCond %{SERVER_PORT} 443
-RewriteRule ^.*$ https://new.com [R=301,L]
+RewriteRule ^.*$ https://new.com? [R=301,L]
 </IfModule>
 CODE
 
