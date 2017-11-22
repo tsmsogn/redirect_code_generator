@@ -2,6 +2,7 @@ module RedirectCodeGenerator
   module ERBTemplates
 
     APACHE = <<CODE
+# <% if permanent %>301<% else %>302<% end %> <%= old %> -> <%= new %>
 <IfModule mod_rewrite.c>
 RewriteEngine On
 

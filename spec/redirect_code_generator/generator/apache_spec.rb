@@ -25,6 +25,7 @@ describe RedirectCodeGenerator::Generator::Apache do
       g = generator.new(old, new)
 
       code = <<CODE
+# 301 /old.html -> /new.html
 <IfModule mod_rewrite.c>
 RewriteEngine On
 
@@ -43,6 +44,7 @@ CODE
       g = generator.new(old, new, permanent)
 
       code = <<CODE
+# 302 /old/ -> /new/
 <IfModule mod_rewrite.c>
 RewriteEngine On
 
@@ -60,6 +62,7 @@ CODE
       g = generator.new(old, new)
 
       code = <<CODE
+# 301 /old/?page=1&search=word -> /new/
 <IfModule mod_rewrite.c>
 RewriteEngine On
 
@@ -79,6 +82,7 @@ CODE
       g = generator.new(old, new)
 
       code = <<CODE
+# 301 http://old.com -> http://new.com
 <IfModule mod_rewrite.c>
 RewriteEngine On
 
@@ -98,6 +102,7 @@ CODE
       g = generator.new(old, new)
 
       code = <<CODE
+# 301 http://old.com:8080 -> http://new.com
 <IfModule mod_rewrite.c>
 RewriteEngine On
 
@@ -117,6 +122,7 @@ CODE
       g = generator.new(old, new)
 
       code = <<CODE
+# 301 https://old.com -> https://new.com
 <IfModule mod_rewrite.c>
 RewriteEngine On
 
