@@ -99,7 +99,6 @@ CODE
     RewriteEngine On
     RewriteCond %{HTTPS} off
     RewriteCond %{HTTP_HOST} ^old\\\.com$
-    RewriteCond %{SERVER_PORT} 80
     RewriteRule ^$ http://new.com? [R=301,L]
 </IfModule>
 CODE
@@ -116,7 +115,6 @@ CODE
 # 301 http://old.com:8080 -> http://new.com
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteCond %{HTTPS} off
     RewriteCond %{HTTP_HOST} ^old\\\.com$
     RewriteCond %{SERVER_PORT} 8080
     RewriteRule ^$ http://new.com? [R=301,L]
@@ -137,7 +135,6 @@ CODE
     RewriteEngine On
     RewriteCond %{HTTPS} on
     RewriteCond %{HTTP_HOST} ^old\\\.com$
-    RewriteCond %{SERVER_PORT} 443
     RewriteRule ^$ https://new.com? [R=301,L]
 </IfModule>
 CODE

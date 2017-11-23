@@ -5,13 +5,13 @@ module RedirectCodeGenerator
 # <%= permanent? ? 301 : 302 %> <%= old %> -> <%= new %>
 <IfModule mod_rewrite.c>
     RewriteEngine On
-<% if uri.scheme %>
+<% if default_port? && uri.scheme %>
     RewriteCond %{HTTPS} <% if uri.scheme == 'https'%>on<% else %>off<% end %>
 <% end %>
 <% if uri.host %>
     RewriteCond %{HTTP_HOST} ^<%= escape? ? escape(uri.host) : uri.host %>$
 <% end %>
-<% if uri.port %>
+<% if !default_port? && uri.scheme %>
     RewriteCond %{SERVER_PORT} <%= uri.port %>
 <% end %>
 <% if uri.query %>

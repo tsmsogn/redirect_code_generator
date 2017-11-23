@@ -25,6 +25,16 @@ module RedirectCodeGenerator
       def escape?
         @escape
       end
+
+      def default_port?
+        if uri.scheme == 'http' && uri.port == 80
+          true
+        elsif uri.scheme == 'https' && uri.port == 443
+          true
+        else
+          false
+        end
+      end
     end
   end
 end
