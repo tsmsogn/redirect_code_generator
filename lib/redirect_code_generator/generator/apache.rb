@@ -3,7 +3,7 @@ require "redirect_code_generator/generator/generator"
 module RedirectCodeGenerator
   module Generator
     class Apache < Generator
-      attr_reader :old, :new, :permanent
+      attr_reader :old, :new
 
       def initialize(old, new, permanent = true, escape = true)
         @old, @new, @permanent, @escape = old, new, permanent, escape
@@ -16,6 +16,10 @@ module RedirectCodeGenerator
 
       def uri
         @uri ||= URI.parse(@old)
+      end
+
+      def permanent?
+        @permanent
       end
 
       def escape?

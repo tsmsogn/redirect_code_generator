@@ -2,7 +2,7 @@ module RedirectCodeGenerator
   module ERBTemplates
 
     APACHE = <<CODE
-# <% if permanent %>301<% else %>302<% end %> <%= old %> -> <%= new %>
+# <%= permanent? ? 301 : 302 %> <%= old %> -> <%= new %>
 <IfModule mod_rewrite.c>
     RewriteEngine On
 <% if uri.scheme %>
@@ -19,7 +19,7 @@ module RedirectCodeGenerator
     RewriteCond %{QUERY_STRING} (^|&)<%= param %>($|&)
 <% end %>
 <% end %>
-    RewriteRule ^<%= escape? ? escape(uri.path) : uri.path %>$ <%= new %>? [R=<% if permanent %>301<% else %>302<% end %>,L]
+    RewriteRule ^<%= escape? ? escape(uri.path) : uri.path %>$ <%= new %>? [R=<%= permanent? ? 301 : 302 %>,L]
 </IfModule>
 CODE
     
