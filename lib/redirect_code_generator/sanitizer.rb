@@ -1,5 +1,5 @@
 module RedirectCodeGenerator
-  module Escapable
+  module Sanitizer
     def escape(str)
       Regexp.escape(str)
     end

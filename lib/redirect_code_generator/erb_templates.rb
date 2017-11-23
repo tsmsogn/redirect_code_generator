@@ -9,7 +9,7 @@ module RedirectCodeGenerator
     RewriteCond %{HTTPS} <% if uri.scheme == 'https'%>on<% else %>off<% end %>
 <% end %>
 <% if uri.host %>
-    RewriteCond %{HTTP_HOST} ^<%= escape(uri.host) %>$
+    RewriteCond %{HTTP_HOST} ^<%= escape? ? escape(uri.host) : uri.host %>$
 <% end %>
 <% if uri.port %>
     RewriteCond %{SERVER_PORT} <%= uri.port %>
@@ -19,7 +19,7 @@ module RedirectCodeGenerator
     RewriteCond %{QUERY_STRING} (^|&)<%= param %>($|&)
 <% end %>
 <% end %>
-    RewriteRule ^<%= escape(uri.path) %>$ <%= new %>? [R=<% if permanent %>301<% else %>302<% end %>,L]
+    RewriteRule ^<%= escape? ? escape(uri.path) : uri.path %>$ <%= new %>? [R=<% if permanent %>301<% else %>302<% end %>,L]
 </IfModule>
 CODE
     

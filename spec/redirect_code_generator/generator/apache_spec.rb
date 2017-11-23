@@ -52,6 +52,24 @@ CODE
       expect(g.create_redirect_code).to eq(code)
     end
 
+    it "works with no escape option" do
+      old = "/old_user_dir/(.*)"
+      new = "/new_user_dir/$1"
+      permanent = true 
+      escape = false
+      g = generator.new(old, new, permanent, escape)
+
+      code = <<CODE
+# 301 /old_user_dir/(.*) -> /new_user_dir/$1
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^/old_user_dir/(.*)$ /new_user_dir/$1? [R=301,L]
+</IfModule>
+CODE
+
+      expect(g.create_redirect_code).to eq(code)
+    end
+
     it "works with url has query" do
       old = "/old/?page=1&search=word"
       new = "/new/"
