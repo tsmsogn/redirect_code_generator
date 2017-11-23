@@ -7,10 +7,12 @@ require 'optparse'
 require 'redirect_code_generator/version'
 require 'redirect_code_generator/generator/apache'
 permanent = true
+escape = true
 print_version = false
 
 opt = OptionParser.new
 opt.on('--[no-]permanent', 'Use permanent redirect') { |_| permanent = _ }
+opt.on('--[no-]escape', 'Escape any characters') { |_| escape = _ }
 opt.on('-v', '--version', 'Print version') { |_| print_version = true }
 
 args = opt.parse(ARGV)
@@ -27,5 +29,5 @@ if old.nil? || new.nil?
   exit 1
 end
 
-generator = RedirectCodeGenerator::Generator::Apache.new(old, new, permanent)
+generator = RedirectCodeGenerator::Generator::Apache.new(old, new, permanent, escape)
 puts generator.create_redirect_code
