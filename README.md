@@ -1,8 +1,6 @@
 # RedirectCodeGenerator
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/redirect_code_generator`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+RedirectCodeGenerator creates Apache redirect code
 
 ## Installation
 
@@ -22,7 +20,28 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+$ ./generate_apache_redirect_code /old_dir /new_dir
+# 301 /old_dir -> /new_dir
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^/old_dir$ /new_dir? [R=301,L]
+</IfModule>
+```
+
+## Options
+
+```
+$ ./generate_apache_redirect_code -h
+Usage: generate_apache_redirect_code [options]
+        --[no-]permanent             Use permanent redirect
+        --[no-]escape                Escape any characters
+    -v, --version                    Print version
+```
+
+## Todo
+
+- Nginx
 
 ## Development
 
