@@ -1,3 +1,4 @@
+require "erb"
 require "redirect_code_generator/erb_templates"
 
 module RedirectCodeGenerator
