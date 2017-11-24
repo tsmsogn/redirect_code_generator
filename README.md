@@ -18,8 +18,8 @@ $ ./generate_apache_redirect_code /old_dir /new_dir
 ```
 $ ./generate_apache_redirect_code -h
 Usage: generate_apache_redirect_code [options]
-        --[no-]permanent             Use permanent redirect
-        --[no-]escape                Escape any characters
+        --[no-]permanent             Use permanent redirect (default: permanent)
+        --[no-]escape                Escape any characters (default: escape)
     -v, --version                    Print version
 ```
 

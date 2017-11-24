@@ -11,8 +11,8 @@ escape = true
 print_version = false
 
 opt = OptionParser.new
-opt.on('--[no-]permanent', 'Use permanent redirect') { |_| permanent = _ }
-opt.on('--[no-]escape', 'Escape any characters') { |_| escape = _ }
+opt.on('--[no-]permanent', 'Use permanent redirect (default: permanent)') { |_| permanent = _ }
+opt.on('--[no-]escape', 'Escape any characters (default: escape)') { |_| escape = _ }
 opt.on('-v', '--version', 'Print version') { |_| print_version = true }
 
 args = opt.parse(ARGV)
