@@ -2,6 +2,8 @@
 
 RedirectCodeGenerator creates Apache redirect code
 
+[![Build Status](https://travis-ci.org/tsmsogn/redirect_code_generator.svg?branch=master)](https://travis-ci.org/tsmsogn/redirect_code_generator)
+
 ## Usage
 
 ```
