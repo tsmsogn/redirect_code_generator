@@ -3,4 +3,4 @@
 current_dir=`dirname $0`
 cd ${current_dir}
 
-ruby -I ./lib ./bin/generate_apache_redirect_code $@
+ruby -I ./lib ./bin/create_apache_redirect_code $@

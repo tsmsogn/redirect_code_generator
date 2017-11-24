@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 #
-# generate_apache_redirect_code [old] [new]
+# create_apache_redirect_code [old] [new]
 #
 
 require 'optparse'
@@ -18,14 +18,14 @@ opt.on('-v', '--version', 'Print version') { |_| print_version = true }
 args = opt.parse(ARGV)
 
 if print_version
-  puts "generate_apache_redirect_code #{RedirectCodeGenerator::VERSION}"
+  puts "create_apache_redirect_code #{RedirectCodeGenerator::VERSION}"
   exit 0
 end
 
 old = args.shift
 new = args.shift
 if old.nil? || new.nil?
-  puts "Usage: generate_apache_redirect_code [old] [new] -options"
+  puts "Usage: create_apache_redirect_code [old] [new] -options"
   exit 1
 end
 
