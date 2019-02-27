@@ -7,7 +7,7 @@ describe RedirectCodeGenerator::ApacheRewriteNormalize do
   end
 
   it ".to_rewrite_rule_path" do
-    expect(normalize.to_rewrite_rule_path('http://example.com/')).to eq '/?'
     expect(normalize.to_rewrite_rule_path('/old.html')).to eq '/?old.html'
+    expect(normalize.to_rewrite_rule_path('/1/2')).to eq '/?1/2'
   end
 end

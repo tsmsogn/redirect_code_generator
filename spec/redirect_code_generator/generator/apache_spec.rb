@@ -30,7 +30,7 @@ describe RedirectCodeGenerator::Generator::Apache do
 # 301 /old.html -> /new.html
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteRule ^/old\\\.html$ /new.html? [R=301,L]
+    RewriteRule ^/?old\\\.html$ /new.html? [R=301,L]
 </IfModule>
 CODE
 
@@ -47,7 +47,7 @@ CODE
 # 302 /old/ -> /new/
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteRule ^/old/$ /new/? [R=302,L]
+    RewriteRule ^/?old/$ /new/? [R=302,L]
 </IfModule>
 CODE
 
@@ -65,7 +65,7 @@ CODE
 # 301 /old_user_dir/(.*) -> /new_user_dir/$1
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteRule ^/old_user_dir/(.*)$ /new_user_dir/$1? [R=301,L]
+    RewriteRule ^/?old_user_dir/(.*)$ /new_user_dir/$1? [R=301,L]
 </IfModule>
 CODE
 
@@ -83,7 +83,7 @@ CODE
     RewriteEngine On
     RewriteCond %{QUERY_STRING} (^|&)page=1($|&)
     RewriteCond %{QUERY_STRING} (^|&)search=word($|&)
-    RewriteRule ^/old/$ /new/? [R=301,L]
+    RewriteRule ^/?old/$ /new/? [R=301,L]
 </IfModule>
 CODE
 

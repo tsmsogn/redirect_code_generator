@@ -32,6 +32,15 @@ module RedirectCodeGenerator
         @escape
       end
 
+      def rewrite_rule_source_path
+        path = old_uri.path
+        if escape?
+          path = escape(path)
+        end
+
+        to_rewrite_rule_path(path)
+      end
+
       def redirect_http_status_code
         case permanent?
         when true then

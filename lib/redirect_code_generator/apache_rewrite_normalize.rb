@@ -4,8 +4,7 @@ require 'uri'
 module RedirectCodeGenerator
   module ApacheRewriteNormalize
     def to_rewrite_rule_path(path)
-      uri = URI.parse(path)
-      uri.path.gsub(/^\//, "/?")
+      path.gsub(/^\//, "/?")
     end
 
     def escape(str)

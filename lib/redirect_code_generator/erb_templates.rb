@@ -19,7 +19,7 @@ module RedirectCodeGenerator
     RewriteCond %{QUERY_STRING} (^|&)<%= param %>($|&)
 <% end %>
 <% end %>
-    RewriteRule ^<%= escape? ? escape(old_uri.path) : old_uri.path %>$ <%= new %>? [R=<%= redirect_http_status_code %>,L]
+    RewriteRule ^<%= rewrite_rule_source_path %>$ <%= new %>? [R=<%= redirect_http_status_code %>,L]
 </IfModule>
 CODE
     
