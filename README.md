@@ -11,7 +11,7 @@ $ ./create_apache_redirect_code /old_dir /new_dir
 # 301 /old_dir -> /new_dir
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteRule ^/old_dir$ /new_dir? [R=301,L]
+    RewriteRule ^/?old_dir$ /new_dir? [R=301,L]
 </IfModule>
 ```
 
