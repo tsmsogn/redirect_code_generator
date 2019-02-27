@@ -20,6 +20,10 @@ module RedirectCodeGenerator
         @old_uri ||= URI.parse(@old)
       end
 
+      def new_uri
+        @new_uri ||= URI.parse(@new)
+      end
+
       def permanent?
         @permanent
       end
