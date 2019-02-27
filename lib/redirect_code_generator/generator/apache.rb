@@ -16,8 +16,8 @@ module RedirectCodeGenerator
         erb.result(binding)
       end
 
-      def uri
-        @uri ||= URI.parse(@old)
+      def old_uri
+        @old_uri ||= URI.parse(@old)
       end
 
       def permanent?
@@ -29,9 +29,9 @@ module RedirectCodeGenerator
       end
 
       def default_port?
-        if uri.scheme == 'http' && uri.port == 80
+        if old_uri.scheme == 'http' && old_uri.port == 80
           true
-        elsif uri.scheme == 'https' && uri.port == 443
+        elsif old_uri.scheme == 'https' && old_uri.port == 443
           true
         else
           false
