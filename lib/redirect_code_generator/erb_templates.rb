@@ -2,24 +2,24 @@ module RedirectCodeGenerator
   module ERBTemplates
 
     APACHE = <<CODE
-# <%= permanent? ? 301 : 302 %> <%= old %> -> <%= new %>
+# <%= redirect_http_status_code %> <%= old %> -> <%= new %>
 <IfModule mod_rewrite.c>
     RewriteEngine On
-<% if default_port? && uri.scheme %>
-    RewriteCond %{HTTPS} <% if uri.scheme == 'https'%>on<% else %>off<% end %>
+<% if default_port? && old_uri.scheme %>
+    RewriteCond %{HTTPS} <% if old_uri.scheme == 'https'%>on<% else %>off<% end %>
 <% end %>
-<% if uri.host %>
-    RewriteCond %{HTTP_HOST} ^<%= escape? ? escape(uri.host) : uri.host %>$
+<% if old_uri.host %>
+    RewriteCond %{HTTP_HOST} ^<%= escape? ? escape(old_uri.host) : old_uri.host %>$
 <% end %>
-<% if !default_port? && uri.scheme %>
-    RewriteCond %{SERVER_PORT} <%= uri.port %>
+<% if !default_port? && old_uri.scheme %>
+    RewriteCond %{SERVER_PORT} <%= old_uri.port %>
 <% end %>
-<% if uri.query %>
-<% uri.query.split('&').each do |param| %>
+<% if old_uri.query %>
+<% old_uri.query.split('&').each do |param| %>
     RewriteCond %{QUERY_STRING} (^|&)<%= param %>($|&)
 <% end %>
 <% end %>
-    RewriteRule ^<%= escape? ? escape(uri.path) : uri.path %>$ <%= new %>? [R=<%= permanent? ? 301 : 302 %>,L]
+    RewriteRule ^<%= rewrite_rule_source_path %>$ <%= new %>? [R=<%= redirect_http_status_code %>,L]
 </IfModule>
 CODE
     

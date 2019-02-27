@@ -10,7 +10,7 @@ describe RedirectCodeGenerator do
 # 301 /old.html -> /new.html
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteRule ^/old\\\.html$ /new.html? [R=301,L]
+    RewriteRule ^/?old\\\.html$ /new.html? [R=301,L]
 </IfModule>
 CODE
 
