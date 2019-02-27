@@ -32,6 +32,15 @@ module RedirectCodeGenerator
         @escape
       end
 
+      def redirect_http_status_code
+        case permanent?
+        when true then
+          301
+        when false then
+          302
+        end
+      end
+
       def default_port?
         if old_uri.scheme == 'http' && old_uri.port == 80
           true

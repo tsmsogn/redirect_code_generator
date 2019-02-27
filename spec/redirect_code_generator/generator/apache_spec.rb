@@ -2,11 +2,13 @@ require "spec_helper"
 require "redirect_code_generator/generator/apache"
 
 describe RedirectCodeGenerator::Generator::Apache do
-  subject(:generator) { described_class }
+  subject(:generator) {described_class}
+  let (:old_url) {'http://old.com'}
+  let (:new_url) {'http://new.com'}
 
   describe ".new" do
     it "doesn't work without param" do
-      expect{ generator.new }.to raise_error
+      expect {generator.new}.to raise_error
     end
 
     it "works" do
@@ -55,7 +57,7 @@ CODE
     it "works with no escape option" do
       old = "/old_user_dir/(.*)"
       new = "/new_user_dir/$1"
-      permanent = true 
+      permanent = true
       escape = false
       g = generator.new(old, new, permanent, escape)
 
@@ -140,6 +142,24 @@ CODE
 CODE
 
       expect(g.create_redirect_code).to eq(code)
+    end
+  end
+
+  describe '.redirect_http_status_code' do
+    context 'permanent' do
+      it 'returns 301' do
+        g = generator.new(old_url, new_url)
+
+        expect(g.redirect_http_status_code).to eq(301)
+      end
+    end
+
+    context 'temporary' do
+      it 'returns 302' do
+        g = generator.new(old_url, new_url, false)
+
+        expect(g.redirect_http_status_code).to eq(302)
+      end
     end
   end
 end
