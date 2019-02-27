@@ -1,8 +1,10 @@
 require "redirect_code_generator/generator/generator"
+require "redirect_code_generator/apache_rewrite_normalize"
 
 module RedirectCodeGenerator
   module Generator
     class Apache < Generator
+      include ApacheRewriteNormalize
       attr_reader :old, :new
 
       def initialize(old, new, permanent = true, escape = true)
