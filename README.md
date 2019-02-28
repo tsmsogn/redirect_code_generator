@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/tsmsogn/redirect_code_generator.svg?branch=master)](https://travis-ci.org/tsmsogn/redirect_code_generator)
 [![codecov](https://codecov.io/gh/tsmsogn/redirect_code_generator/branch/master/graph/badge.svg)](https://codecov.io/gh/tsmsogn/redirect_code_generator)
+[![Maintainability](https://api.codeclimate.com/v1/badges/5ee8d516b7ed906304bf/maintainability)](https://codeclimate.com/github/tsmsogn/redirect_code_generator/maintainability)
 
 RedirectCodeGenerator creates Apache redirect code.
 
