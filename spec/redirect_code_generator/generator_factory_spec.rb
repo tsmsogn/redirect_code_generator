@@ -10,8 +10,8 @@ describe RedirectCodeGenerator::GeneratorFactory do
       expect { factory.new nil }.to raise_error(ArgumentError)
     end
 
-    it "instantiates a new object" do
-      expect(factory.new('Generator')).to be_a RedirectCodeGenerator::Generator::Generator
+    it "instantiates a new apache generator" do
+      expect(factory.new('Apache', 'old.html', 'new.html')).to be_a RedirectCodeGenerator::Generator::Apache
     end
   end
 end
