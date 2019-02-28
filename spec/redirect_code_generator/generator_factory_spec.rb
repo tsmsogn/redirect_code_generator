@@ -6,7 +6,7 @@ describe RedirectCodeGenerator::GeneratorFactory do
   subject(:factory) { described_class }
 
   describe ".new" do
-    it "throws error if klass type is ommitted" do
+    it "throws error if klass type is omitted" do
       expect { factory.new nil }.to raise_error(ArgumentError)
     end
 
